@@ -109,6 +109,7 @@ module.exports = {
   content: [
     join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html}'),
     ...createGlobPatternsForDependencies(__dirname),
+    './libs/**/*.{html,ts,tsx,js,jsx}',
   ],
   theme: {
     extend: {
