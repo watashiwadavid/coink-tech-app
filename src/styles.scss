@@ -1,1 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  font-family: 'Monserrat', sans-serif, serif;
+}
+
+@layer base {
+  .btn-base {
+    @apply inline-block relative overflow-hidden;
+    @apply font-bold px-4 py-3 uppercase;
+    @apply text-base;
+  }
+
+  .btn-primary {
+    @apply rounded-full bg-primary text-secondary;
+    @extend .btn-base;
+  }
+
+  .btn-secondary {
+    @apply rounded-full bg-secondary text-white font-bold;
+    @extend .btn-base;
+  }
+}
