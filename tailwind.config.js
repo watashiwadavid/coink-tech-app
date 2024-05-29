@@ -100,10 +100,8 @@ const generatePalette = (config) => {
 };
 
 const colors = {
-  primary: { ...generatePalette('#1EEA00'), DEFAULT: '#1EEA00' }, // Define tu color principal aquí
+  primary: { ...generatePalette('#1EEA00'), DEFAULT: '#1EEA00' },
   secondary: { ...generatePalette('#004B40'), DEFAULT: '#004B40' },
-  // Otros colores personalizados
-  otro: '#ececec',
 };
 
 /** @type {import('tailwindcss').Config} */

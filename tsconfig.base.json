@@ -16,9 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@coink-app/data": ["libs/data/src/index.ts"],
-      "@coink-app/logic": ["libs/logic/src/index.ts"],
       "@coink-app/ui": ["libs/ui/src/index.ts"],
-      "@coink-app/ui/views": ["libs/ui/views/src/index.ts"]
+      "@coink-app/ui/views": ["libs/ui/views/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
