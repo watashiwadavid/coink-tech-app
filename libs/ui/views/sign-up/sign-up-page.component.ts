@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'lib-sign-up-page',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './sign-up-page.component.html',
+  styleUrl: './sign-up-page.component.scss',
+})
+export class SignUpPageComponent {}

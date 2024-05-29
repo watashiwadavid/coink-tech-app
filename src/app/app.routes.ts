@@ -6,4 +6,9 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('@coink-app/ui/views').then((p) => p.HomePageComponent),
   },
+  {
+    path: 'sign-up',
+    loadComponent: () =>
+      import('@coink-app/ui/views').then((p) => p.SignUpPageComponent),
+  },
 ];
