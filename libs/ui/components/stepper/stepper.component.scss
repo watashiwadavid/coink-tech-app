@@ -1,0 +1,22 @@
+.step {
+  position: relative;
+  @apply w-4 h-4;
+  @apply ring-1 ring-gray-400;
+  @apply rounded-full;
+
+  &.active {
+    @apply ring-1 ring-primary-600;
+  }
+}
+
+.step.active::before {
+  $size: 75%;
+  content: '';
+  position: absolute;
+  top: calc((100% - $size) / 2);
+  left: calc((100% - $size) / 2);
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  @apply bg-primary-600;
+}

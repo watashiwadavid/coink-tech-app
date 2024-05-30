@@ -17,6 +17,7 @@
     "paths": {
       "@coink-app/data": ["libs/data/src/index.ts"],
       "@coink-app/ui": ["libs/ui/src/index.ts"],
+      "@coink-app/ui/components": ["libs/ui/components/index.ts"],
       "@coink-app/ui/views": ["libs/ui/views/index.ts"]
     }
   },
