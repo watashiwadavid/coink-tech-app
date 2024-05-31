@@ -1,11 +1,12 @@
+import { CommonModule, UpperCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { AlertService } from '@coink-app/ui/components';
 
 @Component({
   selector: 'app-home-page',
@@ -17,6 +18,11 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class HomePageComponent {
   router = inject(Router);
+  alertService = inject(AlertService);
+
+  goToSignIn(): void {
+    this.alertService.pendingImplementation();
+  }
 
   goToSignUp(): void {
     this.router.navigate(['sign-up']);

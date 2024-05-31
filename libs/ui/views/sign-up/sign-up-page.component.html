@@ -4,10 +4,21 @@
       <span class="text-secondary font-bold my-2">NÚMERO DE CELULAR</span>
       <app-stepper #stepper [totalSteps]="3" [(currentStep)]="currentStep" />
     </app-header>
-    <!-- Título -->
-    <h1 class="text-center text-lg font-semibold mb-6">
-      NÚMERO CELULAR {{ currentStep }}
-    </h1>
+
+    <div class="flex flex-row justify-between items-center w-full gap-6">
+      <img
+        class="w-20 h-auto"
+        src="isotype.svg"
+        alt="coink isotype"
+        srcset="isotype.svg"
+      />
+
+      <span class="text-gray-500 font-small">
+        Para comenzar, por favor ingresa <strong> tu número celular.</strong>
+      </span>
+    </div>
+
+    <div class="border-b-2 border-primary my-8 mx-2"></div>
 
     <!-- Campo para el número celular -->
     <div class="bg-gray-100 rounded-lg p-4 mb-4 mt-auto">

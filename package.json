@@ -10,6 +10,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.0.0",
+    "@angular/cdk": "^18.0.1",
     "@angular/common": "~18.0.0",
     "@angular/compiler": "~18.0.0",
     "@angular/core": "~18.0.0",
@@ -20,6 +21,7 @@
     "@capacitor/android": "^6.0.0",
     "@capacitor/core": "^6.0.0",
     "@nx/angular": "19.1.0",
+    "@rxweb/reactive-form-validators": "^13.0.1",
     "chroma-js": "^2.4.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

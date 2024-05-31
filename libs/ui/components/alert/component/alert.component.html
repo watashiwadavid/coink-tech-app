@@ -1,0 +1,21 @@
+<div class="bg-white rounded-xl px-4 py-8">
+  <div
+    class="w-full flex flex-col justify-center items-center gap-4 text-center"
+  >
+    <img class="w-24" [src]="data.img" alt="Logo Alert" />
+
+    @if (data.title) {
+    <span class="text-secondary font-bold text-xl">
+      {{ data.title }}
+    </span>
+    } @if(data.message){
+    <span class="text-gray-500 font-bold">
+      {{ data.message }}
+    </span>
+    } @if(data.button) {
+    <button class="btn-primary w-full" (click)="buttonClicked()">
+      {{ data.button }}
+    </button>
+    }
+  </div>
+</div>
