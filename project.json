@@ -8,16 +8,12 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/coink-app",
         "index": "./src/index.html",
         "browser": "./src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -26,9 +22,7 @@
             "input": "public"
           }
         ],
-        "styles": [
-          "./src/styles.scss"
-        ],
+        "styles": ["./src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -82,16 +76,12 @@
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
-        "lintFilePatterns": [
-          "./src"
-        ]
+        "lintFilePatterns": ["./src"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectName}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
       "options": {
         "jestConfig": "jest.config.app.ts"
       }
@@ -103,6 +93,30 @@
         "port": 4200,
         "staticFilePath": "dist/coink-app/browser",
         "spa": true
+      }
+    },
+
+    "sync": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx cap sync",
+        "cwd": "src"
+      },
+      "configurations": {
+        "ios": {
+          "cmd": "npx cap sync ios"
+        },
+        "android": {
+          "cmd": "npx cap sync android"
+        }
+      }
+    },
+
+    "open-android": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx cap open android",
+        "cwd": "src"
       }
     }
   }
