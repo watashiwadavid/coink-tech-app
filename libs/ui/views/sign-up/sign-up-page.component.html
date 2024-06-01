@@ -1,35 +1,12 @@
-<div class="bg-gray-100 flex items-center justify-center h-screen">
-  <div class="w-full max-w-xs mx-auto">
+<div class="bg-gray-100 flex h-screen">
+  <div class="w-full max-w-sm mx-auto">
     <app-header>
       <span class="text-secondary font-bold my-2">NÚMERO DE CELULAR</span>
       <app-stepper #stepper [totalSteps]="3" [(currentStep)]="currentStep" />
     </app-header>
 
-    <div class="flex flex-row justify-between items-center w-full gap-6">
-      <img
-        class="w-20 h-auto"
-        src="isotype.svg"
-        alt="coink isotype"
-        srcset="isotype.svg"
-      />
-
-      <span class="text-gray-500 font-small">
-        Para comenzar, por favor ingresa <strong> tu número celular.</strong>
-      </span>
-    </div>
-
-    <div class="border-b-2 border-primary my-8 mx-2"></div>
-
-    <!-- Campo para el número celular -->
-    <div class="bg-gray-100 rounded-lg p-4 mb-4 mt-auto">
-      <input
-        type="text"
-        class="w-full text-center text-gray-500 text-xl bg-gray-100 focus:outline-none"
-        placeholder="(XXX - XXXXXXX)"
-        disabled
-      />
-    </div>
-
-    <app-numeric-keyboard />
+    <app-step-layout [config]="steps[1]">
+      <!-- <app-phone /> -->
+    </app-step-layout>
   </div>
 </div>
