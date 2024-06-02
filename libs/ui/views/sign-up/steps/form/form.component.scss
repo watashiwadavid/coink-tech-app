@@ -1,0 +1,23 @@
+.form-control {
+  @apply flex flex-col relative;
+
+  select,
+  input {
+    @apply bg-transparent border-b-2 border-gray-500 p-1;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  input[type='date'] {
+    @apply h-0 w-0 border-0;
+  }
+}

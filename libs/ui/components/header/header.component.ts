@@ -3,6 +3,7 @@ import {
   Component,
   ViewEncapsulation,
   inject,
+  output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -17,9 +18,5 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  private router = inject(Router);
-
-  navigateBack(): void {
-    this.router.navigate(['..']);
-  }
+  protected backPressed = output<void>();
 }

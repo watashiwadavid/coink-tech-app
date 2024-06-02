@@ -1,11 +1,16 @@
 <!-- Campo para el número celular -->
-<div class="bg-gray-100 rounded-lg p-4 mb-4 mt-auto">
+<div class="bg-gray-300 rounded-lg p-4 mb-4 mt-auto">
   <input
     type="text"
-    class="w-full text-center text-gray-500 text-xl bg-gray-100 focus:outline-none"
+    class="w-full text-center text-gray-500 text-3xl bg-transparent focus:outline-none"
     placeholder="(XXX - XXXXXXX)"
     disabled
+    [value]="phone()"
   />
 </div>
 
-<app-numeric-keyboard />
+<app-numeric-keyboard
+  [submitDisabled]="submitDisabled()"
+  (onKeyPressed)="onKeyPressed($event)"
+  (onSubmitPressed)="onSubmit.emit()"
+/>

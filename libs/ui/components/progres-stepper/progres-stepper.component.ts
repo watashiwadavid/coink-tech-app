@@ -9,15 +9,15 @@ import {
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-stepper',
+  selector: 'app-progress-stepper',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './stepper.component.html',
-  styleUrl: './stepper.component.scss',
+  templateUrl: './progres-stepper.component.html',
+  styleUrl: './progres-stepper.component.scss',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StepperComponent {
+export class ProgressStepperComponent {
   public totalSteps = input(0);
   public currentStep = model(0);
 

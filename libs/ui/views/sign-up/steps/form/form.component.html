@@ -1,1 +1,110 @@
-<p>form works!</p>
+<form [formGroup]="form" class="flex flex-col gap-4">
+  <h5 class="text-secondary font-bold">Documento de identidad</h5>
+
+  <div class="form-control">
+    <select
+      type="number"
+      placeholder="Tipo de documento"
+      formControlName="documentTypeId"
+      [class]="form.value.documentTypeId ? 'text-black-500' : 'text-gray-400'"
+    >
+      <option [ngValue]="undefined" hidden disabled selected>
+        Tipo de documento
+      </option>
+      @for (docType of documentTypes(); track $index) {
+      <option [ngValue]="docType.id">{{ docType.description }}</option>
+      }
+    </select>
+    <app-form-error [control]="form.controls.documentTypeId" />
+  </div>
+
+  <div class="form-control">
+    <input
+      type="number"
+      formControlName="document"
+      placeholder="Número de documento"
+    />
+    <app-form-error [control]="form.controls.document" />
+  </div>
+
+  <div class="form-control">
+    <input
+      type="text"
+      readonly
+      formControlName="documentDate"
+      placeholder="Fecha expedición del documento"
+      (click)="expDate.showPicker()"
+    />
+    <input
+      #expDate
+      class="h-0 m-0 p-0 border-0"
+      type="date"
+      ngModel
+      [ngModelOptions]="{ standalone: true }"
+      (ngModelChange)="expeditionDateChange($event)"
+    />
+    <app-form-error [control]="form.controls.documentDate" />
+  </div>
+
+  <div class="form-control">
+    <input
+      type="text"
+      readonly
+      formControlName="birthDate"
+      placeholder="Fecha de nacimiento"
+      (click)="birthDate.showPicker()"
+    />
+    <input
+      #birthDate
+      class="h-0 m-0 p-0 border-0"
+      type="date"
+      ngModel
+      [ngModelOptions]="{ standalone: true }"
+      (ngModelChange)="birthDateChange($event)"
+    />
+    <app-form-error [control]="form.controls.birthDate" />
+  </div>
+
+  <div class="form-control">
+    <select type="number" formControlName="genderId" placeholder="Género">
+      @for (docType of documentTypes(); track $index) {
+      <option [value]="docType.id">{{ docType.description }}</option>
+      }
+    </select>
+    <app-form-error [control]="form.controls.genderId" />
+  </div>
+
+  <h5 class="text-secondary font-bold">Configura tu cuenta</h5>
+
+  <div class="form-control">
+    <input
+      type="text"
+      formControlName="email"
+      placeholder="Correo electrónico"
+    />
+    <app-form-error [control]="form.controls.email" />
+  </div>
+
+  <div class="form-control">
+    <input
+      type="text"
+      formControlName="emailConfirm"
+      placeholder="Confirmar correo electrónico"
+    />
+    <app-form-error [control]="form.controls.emailConfirm" />
+  </div>
+
+  <div class="form-control">
+    <input type="number" formControlName="pin" placeholder="PIN de seguridad" />
+    <app-form-error [control]="form.controls.pin" />
+  </div>
+
+  <div class="form-control">
+    <input
+      type="number"
+      formControlName="pinConfirm"
+      placeholder="Confirmar PIN de seguridad"
+    />
+    <app-form-error [control]="form.controls.pinConfirm" />
+  </div>
+</form>

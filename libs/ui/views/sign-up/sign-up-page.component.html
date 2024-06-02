@@ -1,12 +1,33 @@
-<div class="bg-gray-100 flex h-screen">
+<div class="bg-gray-100 flex h-screen overflow-scroll">
   <div class="w-full max-w-sm mx-auto">
-    <app-header>
-      <span class="text-secondary font-bold my-2">NÚMERO DE CELULAR</span>
-      <app-stepper #stepper [totalSteps]="3" [(currentStep)]="currentStep" />
+    <app-header (backPressed)="previousStep()">
+      <span class="text-secondary font-bold my-2">{{
+        steps[currentStep()].title
+      }}</span>
+      <app-progress-stepper
+        [totalSteps]="steps.length"
+        [(currentStep)]="currentStep"
+      />
     </app-header>
 
-    <app-step-layout [config]="steps[1]">
-      <!-- <app-phone /> -->
-    </app-step-layout>
+    <app-stepper #stepper [selectedIndex]="currentStep()">
+      <cdk-step>
+        <app-step-layout [config]="steps[0]">
+          <app-phone (onSubmit)="nextStep()" />
+        </app-step-layout>
+      </cdk-step>
+
+      <cdk-step>
+        <app-step-layout [config]="steps[1]">
+          <app-form />
+        </app-step-layout>
+      </cdk-step>
+
+      <cdk-step>
+        <app-step-layout [config]="steps[2]">
+          <app-tos />
+        </app-step-layout>
+      </cdk-step>
+    </app-stepper>
   </div>
 </div>

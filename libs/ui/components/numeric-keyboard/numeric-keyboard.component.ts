@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,5 +9,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './numeric-keyboard.component.scss',
 })
 export class NumericKeyboardComponent {
-  public onKeyPressed = output<void>();
+  public submitDisabled = input<boolean>(false);
+
+  public onKeyPressed = output<string>();
+  public onSubmitPressed = output<void>();
+
+  protected keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '#', '0'];
 }

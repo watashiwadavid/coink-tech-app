@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { DocumentType } from '../models/documents.model';
+import { DocumentType } from '../models/document-type.model';
 import { HttpClient } from '@angular/common/http';
 import {
   Subject,

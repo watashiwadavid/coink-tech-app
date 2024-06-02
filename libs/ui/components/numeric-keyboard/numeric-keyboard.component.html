@@ -1,22 +1,22 @@
 <div
   class="grid grid-cols-3 gap-4 text-center text-3xl text-secondary font-[500]"
 >
-  <button class="bg-transparent p-4">1</button>
-  <button class="p-4">2</button>
-  <button class="p-4">3</button>
-  <button class="p-4">4</button>
-  <button class="p-4">5</button>
-  <button class="p-4">6</button>
-  <button class="p-4">7</button>
-  <button class="p-4">8</button>
-  <button class="p-4">9</button>
-
-  <button class="p-4 flex items-center justify-center">
+  @for (key of keys; track $index) {
+  <button class="p-4" (click)="onKeyPressed.emit(key)">
+    @if (key !== '#') {
+    {{ key }}
+    } @else {
     <ng-container *ngTemplateOutlet="clearButton"></ng-container>
+    }
   </button>
 
-  <button class="p-4">0</button>
-  <button class="p-4 flex items-center justify-center" [disabled]="true">
+  }
+
+  <button
+    class="p-4 flex items-center justify-center"
+    [disabled]="submitDisabled()"
+    (click)="onSubmitPressed.emit()"
+  >
     <div
       class="ckeck-icon w-12 h-12 rounded-full flex justify-center items-center"
     >

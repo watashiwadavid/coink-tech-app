@@ -2,16 +2,16 @@ import { compare, email, required } from '@rxweb/reactive-form-validators';
 
 export class FormModel {
   @required({ message: 'Campo requerido' })
-  documentTypeId?: number;
+  documentTypeId?: number = undefined;
 
   @required({ message: 'Campo requerido' })
   document: string = '';
 
   @required({ message: 'Campo requerido' })
-  documentDate?: Date;
+  documentDate?: string;
 
   @required({ message: 'Campo requerido' })
-  birthDate?: Date;
+  birthDate?: string;
 
   @required({ message: 'Campo requerido' })
   genderId?: number;
