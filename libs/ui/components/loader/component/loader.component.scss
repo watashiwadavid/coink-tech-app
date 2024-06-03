@@ -1,0 +1,40 @@
+.loader-overlay {
+  @apply fixed top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-primary bg-opacity-50 z-50 gap-16;
+}
+
+.indeterminate-progress-bar {
+  @apply w-full max-w-xs bg-white;
+
+  border-radius: 9999px;
+  height: 0.5rem;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.indeterminate-progress-bar__progress {
+  @apply bg-secondary;
+
+  /* Rounded border */
+  border-radius: 9999px;
+
+  /* Absolute position */
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  width: 50%;
+
+  /* Move the bar infinitely */
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: indeterminate-progress-bar;
+}
+
+@keyframes indeterminate-progress-bar {
+  from {
+    left: -50%;
+  }
+  to {
+    left: 100%;
+  }
+}
