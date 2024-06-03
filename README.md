@@ -11,6 +11,40 @@
 - **CapacitorJS**: 6.0.0
 - **Android Studio**: Jellyfish | 2023.3.1 Patch 1
   - Runtime version: 17.0.10+0--11572160 amd64
+ 
+## Cómo Ejecutar
+
+### Descargar el Repositorio
+
+Clona el repositorio en tu máquina local.
+
+### Instalar Dependencias
+
+Ejecuta el siguiente comando para instalar todas las dependencias necesarias:
+
+```bash
+npm install
+```
+
+### Ejecutar Web
+
+Ejecuta el siguiente comando para ejecutar la aplicación en un browser:
+
+```bash
+npx nx serve
+```
+
+abrir navegador en [http://localhost:4200/](http://localhost:4200/)
+
+### Ejecutar Android
+
+Ejecuta el siguiente comando para ejecutar la aplicación en Android studio:
+
+```bash
+npx nx build  // compilar app angular
+npx nx sync   // copiar compilado a app android
+npx nx open-android  // abrir android studio
+```
 
 ## Descripción del Proyecto
 
@@ -46,36 +80,4 @@ Contiene las siguientes carpetas:
 - **document-type**: Servicio y modelos de API para tipos de documento.
 - **gender**: Servicio y modelos de API para géneros.
 
-## Cómo Ejecutar
 
-### Descargar el Repositorio
-
-Clona el repositorio en tu máquina local.
-
-### Instalar Dependencias
-
-Ejecuta el siguiente comando para instalar todas las dependencias necesarias:
-
-```bash
-npm install
-```
-
-### Ejecutar Web
-
-Ejecuta el siguiente comando para ejecutar la aplicación en un browser:
-
-```bash
-npx nx serve
-```
-
-abrir navegador en [http://localhost:4200/](http://localhost:4200/)
-
-### Ejecutar Android
-
-Ejecuta el siguiente comando para ejecutar la aplicación en Android studio:
-
-```bash
-npx nx build  // compilar app angular
-npx nx sync   // copiar compilado a app android
-open-android  // abrir android studio
-```
