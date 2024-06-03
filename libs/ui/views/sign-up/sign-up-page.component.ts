@@ -12,6 +12,7 @@ import { steps } from './sign-up.const';
 import { TosComponent } from './steps/tos/tos.component';
 import { FormComponent } from './steps/form/form.component';
 import { Router } from '@angular/router';
+import { FormModel } from './steps/form/form.model';
 
 @Component({
   selector: 'app-stepper',
@@ -53,10 +54,22 @@ export class SignUpPageComponent {
   protected currentStep = signal<number>(0);
   protected steps = steps;
 
+  _phone: string = '';
+  _form?: FormModel;
+  _tosAccepted: boolean = false;
+
   public nextStep(): void {
     const nextStep = this.currentStep() + 1;
 
     if (nextStep === this.steps.length) {
+      console.log('Registro Exitoso, datos recolectados:');
+
+      console.log({
+        ...this._form,
+        phone: this._phone,
+        tosAccepted: this._tosAccepted,
+      });
+
       this.alertService.success({
         title: '¡Bienvenido a Coink!',
         message:

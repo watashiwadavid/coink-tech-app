@@ -4,7 +4,7 @@ import { appRoutes } from './app.routes';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideApi } from '@coink-app/data';
 import { environment } from '../environments/environment';
-import { coinkUiProvider } from '@coink-app/ui';
+import { provideCoinkUi } from '@coink-app/ui';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +12,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     provideHttpClient(withFetch()),
     provideApi(environment.apiUrl),
-    coinkUiProvider(),
+    provideCoinkUi(),
   ],
 };

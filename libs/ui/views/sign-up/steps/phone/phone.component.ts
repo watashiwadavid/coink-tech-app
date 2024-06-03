@@ -21,7 +21,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class PhoneComponent {
   protected _phone = signal<string>('');
-  public next = output<void>();
+  public next = output<string>();
 
   protected phone = computed<string>(() => {
     const maskPhone = this._phone().padEnd(10, 'x');

@@ -28,7 +28,7 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 export class TosComponent {
   private alertService = inject(AlertService);
 
-  public next = output<void>();
+  public next = output<boolean>();
 
   protected tosAccepted = signal<boolean>(false);
   protected showError = signal<boolean>(false);
@@ -43,6 +43,6 @@ export class TosComponent {
       return;
     }
 
-    this.next.emit();
+    this.next.emit(this.tosAccepted());
   }
 }

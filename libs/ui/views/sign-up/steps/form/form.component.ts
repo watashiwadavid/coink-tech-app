@@ -63,7 +63,7 @@ export class FormComponent implements OnInit {
   private genderService = inject(GenderService);
   private router = inject(Router);
 
-  public next = output<void>();
+  public next = output<FormModel>();
 
   protected form = this.formBuilder.formGroup(
     new FormModel()
@@ -73,7 +73,6 @@ export class FormComponent implements OnInit {
   protected genders = signal<Gender[]>([]);
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe((value) => console.log(value));
     this.updateLists();
   }
 
@@ -108,6 +107,6 @@ export class FormComponent implements OnInit {
       return;
     }
 
-    this.next.emit();
+    this.next.emit(this.form.value);
   }
 }
