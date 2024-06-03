@@ -20,8 +20,8 @@ import { FormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhoneComponent {
-  protected _phone = signal<string>('3214851549');
-  public onSubmit = output<void>();
+  protected _phone = signal<string>('');
+  public next = output<void>();
 
   protected phone = computed<string>(() => {
     const maskPhone = this._phone().padEnd(10, 'x');

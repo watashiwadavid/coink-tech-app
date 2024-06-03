@@ -1,8 +1,14 @@
-import { compare, email, required } from '@rxweb/reactive-form-validators';
+import {
+  compare,
+  email,
+  required,
+  minNumber,
+} from '@rxweb/reactive-form-validators';
 
 export class FormModel {
-  @required({ message: 'Campo requerido' })
-  documentTypeId?: number = undefined;
+  // @required({ message: 'Campo requerido' })
+  @minNumber({ value: 1, message: 'Selecciona una opción' })
+  documentTypeId: number = 0;
 
   @required({ message: 'Campo requerido' })
   document: string = '';

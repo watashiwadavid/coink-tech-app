@@ -1,9 +1,22 @@
 .form-control {
-  @apply flex flex-col relative;
+  @apply relative z-0;
 
   select,
   input {
-    @apply bg-transparent border-b-2 border-gray-500 p-1;
+    @apply block 
+    py-2.5 
+    px-0
+    w-full 
+    text-base
+    
+    bg-transparent 
+    border-0 
+    border-b-2 
+    border-stone-300 
+    appearance-none 
+    focus:outline-none 
+    focus:ring-0 
+    focus:border-secondary-500;
   }
 
   input::-webkit-outer-spin-button,
@@ -19,5 +32,27 @@
 
   input[type='date'] {
     @apply h-0 w-0 border-0;
+  }
+
+  label {
+    @apply absolute 
+    top-0 
+    left-0 
+    text-stone-400 
+    transition-all 
+    duration-300 
+    ease-in-out 
+    translate-y-2
+    pointer-events-none; // Aplicamos estilos de Tailwind
+  }
+
+  input:focus + label,
+  input:not(:placeholder-shown) + label {
+    @apply left-0 start-0 transform -translate-y-2 text-xs;
+  }
+
+  select:focus + label,
+  select:valid + label {
+    @apply left-0 start-0 transform -translate-y-2 text-xs;
   }
 }

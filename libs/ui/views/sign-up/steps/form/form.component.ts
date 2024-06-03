@@ -5,10 +5,17 @@ import {
   ViewEncapsulation,
   inject,
   input,
+  output,
   signal,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DocumentType, DocumentTypeService, Gender } from '@coink-app/data';
+import {
+  DocumentType,
+  DocumentTypeService,
+  Gender,
+  GenderService,
+} from '@coink-app/data';
+import { AlertService } from '@coink-app/ui/components';
 import {
   IAbstractControl,
   IFormGroup,
@@ -16,6 +23,7 @@ import {
   RxReactiveFormsModule,
 } from '@rxweb/reactive-form-validators';
 import { FormModel } from './form.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-error',
@@ -49,8 +57,13 @@ export class FormErrorComponent {
   encapsulation: ViewEncapsulation.None,
 })
 export class FormComponent implements OnInit {
+  private alertService = inject(AlertService);
   private formBuilder = inject(RxFormBuilder);
   private documentTypeService = inject(DocumentTypeService);
+  private genderService = inject(GenderService);
+  private router = inject(Router);
+
+  public next = output<void>();
 
   protected form = this.formBuilder.formGroup(
     new FormModel()
@@ -65,7 +78,19 @@ export class FormComponent implements OnInit {
   }
 
   private async updateLists(): Promise<void> {
-    this.documentTypes.set(await this.documentTypeService.list());
+    try {
+      this.documentTypes.set(await this.documentTypeService.list());
+      this.genders.set(await this.genderService.list());
+    } catch {
+      this.alertService.error({
+        title: 'Oppppsss!',
+        message:
+          'Ha ocurrido un error inesperado, intentalo de nuevo más tarde.',
+        button: 'Volver',
+      });
+
+      this.router.navigate(['/']);
+    }
   }
 
   protected expeditionDateChange(value?: string | null) {
@@ -74,5 +99,15 @@ export class FormComponent implements OnInit {
 
   protected birthDateChange(value?: string | null) {
     this.form.controls.birthDate?.setValue(value);
+  }
+
+  protected onSubmit(): void {
+    if (this.form.invalid) {
+      this.form.updateValueAndValidity();
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.next.emit();
   }
 }

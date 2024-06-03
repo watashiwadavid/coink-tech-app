@@ -13,19 +13,19 @@
     <app-stepper #stepper [selectedIndex]="currentStep()">
       <cdk-step>
         <app-step-layout [config]="steps[0]">
-          <app-phone (onSubmit)="nextStep()" />
+          <app-phone (next)="nextStep()" />
         </app-step-layout>
       </cdk-step>
 
       <cdk-step>
         <app-step-layout [config]="steps[1]">
-          <app-form />
+          <app-form (next)="nextStep()" />
         </app-step-layout>
       </cdk-step>
 
       <cdk-step>
         <app-step-layout [config]="steps[2]">
-          <app-tos />
+          <app-tos (next)="nextStep()" />
         </app-step-layout>
       </cdk-step>
     </app-stepper>

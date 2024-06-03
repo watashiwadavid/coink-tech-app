@@ -1,33 +1,56 @@
-<h4 class="text-secondary font-bold">LO MÁS IMPORTANTE</h4>
-<div class="text-xs mt-2">
-  <p>
-    Para la apertura del Depósito de Bajo Monto en COINK debes ser una persona
-    natural que de acuerdo con nuestra legislación vigente te encuentres en
-    plena capacidad para adquirir derechos y contraer obligaciones.
-  </p>
-  <br />
+<div class="flex-flex-row gap-2 w-full">
+  <h4 class="text-secondary font-bold">LO MÁS IMPORTANTE</h4>
+  <div class="text-xs mt-2">
+    <p>
+      Para la apertura del Depósito de Bajo Monto en COINK debes ser una persona
+      natural que de acuerdo con nuestra legislación vigente te encuentres en
+      plena capacidad para adquirir derechos y contraer obligaciones.
+    </p>
+    <br />
 
-  <p>
-    Abrirás una cuenta COINK de Bajo Monto la cual te permitirá tener un saldo
-    hasta por 8 salarios mínimos en el mes y realizar débitos por el mismo
-    valor. Si deseas sobrepasar estos límites debes solicitarnos la apertura de
-    un Depósito Ordinario COINK Persona Natural.
-  </p>
-  <br />
-  <p>
-    Solo puedes tener una cuenta COINK de Bajo Monto y podrás utilizar tu
-    dispositivo móvil para consultar tu saldo, tus movimientos, realizar tus
-    transacciones y administrar tu cuenta.
-  </p>
-  <br />
-  <p>
-    Recuerda que no necesitas saldo mínimo ni monto inicial para su apertura.
-  </p>
-</div>
+    <p>
+      Abrirás una cuenta COINK de Bajo Monto la cual te permitirá tener un saldo
+      hasta por 8 salarios mínimos en el mes y realizar débitos por el mismo
+      valor. Si deseas sobrepasar estos límites debes solicitarnos la apertura
+      de un Depósito Ordinario COINK Persona Natural.
+    </p>
+    <br />
+    <p>
+      Solo puedes tener una cuenta COINK de Bajo Monto y podrás utilizar tu
+      dispositivo móvil para consultar tu saldo, tus movimientos, realizar tus
+      transacciones y administrar tu cuenta.
+    </p>
+    <br />
+    <p>
+      Recuerda que no necesitas saldo mínimo ni monto inicial para su apertura.
+    </p>
+  </div>
 
-<h5 class="text-secondary font-bold underline"><a>Lee tu contrato</a></h5>
+  <h5 class="text-secondary font-bold underline my-4 cursor-pointer">
+    <a (click)="tosModal()">Lee tu contrato</a>
+  </h5>
 
-<div class="text-secondary font-semibold">
-  <input class="accent-primary text-white" type="checkbox" />
-  <span> He leído y acepto el contrato</span>
+  <div class="text-secondary font-semibold">
+    <input
+      class="accent-primary text-white"
+      type="checkbox"
+      [(ngModel)]="tosAccepted"
+      (ngModelChange)="showError.set(!tosAccepted())"
+    />
+    <span> He leído y acepto el contrato</span>
+
+    @if(showError()) {
+    <p class="text-red-500 text-xs font-bold">
+      Debes aceptar los terminos de servicio
+    </p>
+    }
+  </div>
+
+  <button
+    type="submit"
+    (click)="onSubmit()"
+    class="mt-6 mb-12 w-full btn-primary"
+  >
+    ACEPTAR
+  </button>
 </div>

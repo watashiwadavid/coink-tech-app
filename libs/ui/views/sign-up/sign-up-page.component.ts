@@ -2,6 +2,7 @@ import { CdkStepper, CdkStepperModule } from '@angular/cdk/stepper';
 import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import {
+  AlertService,
   HeaderComponent,
   ProgressStepperComponent,
 } from '@coink-app/ui/components';
@@ -46,23 +47,38 @@ export class StepperComponent extends CdkStepper {
   styleUrl: './sign-up-page.component.scss',
 })
 export class SignUpPageComponent {
+  private alertService = inject(AlertService);
   private router = inject(Router);
 
-  protected currentStep = signal<number>(1);
+  protected currentStep = signal<number>(0);
   protected steps = steps;
 
   public nextStep(): void {
-    this.currentStep.update((x) => x + 1);
-  }
+    const nextStep = this.currentStep() + 1;
 
-  public previousStep(): void {
-    const nextStep = this.currentStep() - 1;
+    if (nextStep === this.steps.length) {
+      this.alertService.success({
+        title: '¡Bienvenido a Coink!',
+        message:
+          '¡Cuenta creada exitosamente, tu marrano ya está listo para que empieces a ahorrar!',
+        button: 'CONTINUAR',
+      });
 
-    if (nextStep === -1) {
       this.router.navigate(['/']);
       return;
     }
 
     this.currentStep.set(nextStep);
+  }
+
+  public previousStep(): void {
+    const prevStep = this.currentStep() - 1;
+
+    if (prevStep === -1) {
+      this.router.navigate(['/']);
+      return;
+    }
+
+    this.currentStep.set(prevStep);
   }
 }
